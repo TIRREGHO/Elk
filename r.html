@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- bootstrap CSS -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Font Awesome CSS -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+      <!-- Stylesheet-->
+      <link rel="stylesheet" href="styles.css">
+    <title>Quiz: Who Wants to Be a Millionaire?</title>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz: Do you know Finland?</h1>
+        <div id="question-container">
+            <p id="question"></p>
+            <div id="answers"></div>
+        </div>
+        <p id="countdown"></p>
+        <button id="next-btn" onclick="nextQuestion()" disabled>Next Question</button>
+        <p id="result"></p>
+        <button id="restart-btn" onclick="restartQuiz()">Restart</button>
+    </div>
+    <script>
+        const questions = [
+            {
+                question: "What is the capital of Finland?",
+                answers: [
+                    { text: "Helsinki", correct: true },
+                    { text: "Espoo", correct: false },
+                    { text: "Tampere", correct: false },
+                    { text: "Turku", correct: false }
+                ]
+            },
+            {
+                question: "Which of these is a popular Finnish sauna tradition?",
+                answers: [
+                    { text: "Pouring water on hot stones", correct: true },
+                    { text: "Using ice cubes in the sauna", correct: false },
+                    { text: "Wearing thick bathrobes", correct: false },
+                    { text: "Cooking food in the sauna", correct: false }
+                ]
+            },
+            {
+                question: "What is the official language of Finland?",
+                answers: [
+                    { text: "Finnish", correct: true },
+                    { text: "Swedish", correct: false },
+                    { text: "Norwegian", correct: false },
+                    { text: "Danish", correct: false }
+                ]
+            },
+            // Add more questions here...
+        ];
+
+        let currentQuestionIndex = 0;
+        let correctAnswersCount = 0;
+        let selectingAnswer = false;
+        let countdownInterval;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            showQuestion(questions[currentQuestionIndex]);
+        });
+
+        function showQuestion(question) {
+            const questionContainer = document.getElementById("question");
+            const answersContainer = document.getElementById("answers");
+            questionContainer.textContent = question.question;
+            answersContainer.innerHTML = "";
+
+            question.answers.forEach(answer => {
+                const button = document.createElement("button");
+                button.textContent = answer.text;
+                button.classList.add("answer");
+                button.addEventListener("click", () => selectAnswer(button, answer));
+                answersContainer.appendChild(button);
+            });
+        }
+
+        function selectAnswer(button, answer) {
+            if (selectingAnswer) return;
+            selectingAnswer = true;
+            const correct = answer.correct;
+            if (correct) {
+                button.classList.add("correct");
+                correctAnswersCount++;
+            } else {
+                button.classList.add("wrong");
+            }
+            disableAnswers();
+            startCountdown(5);
+        }
+
+        function disableAnswers() {
+            const buttons = document.querySelectorAll("#answers button");
+            buttons.forEach(button => {
+                button.disabled = true;
+            });
+            document.getElementById("next-btn").disabled = false;
+        }
+
+        function startCountdown(seconds) {
+            const countdownElement = document.getElementById("countdown");
+            countdownElement.textContent = `Next question in ${seconds} seconds`;
+            countdownInterval = setInterval(() => {
+                seconds--;
+                countdownElement.textContent = `Next question in ${seconds} seconds`;
+                if (seconds <= 0) {
+                    clearInterval(countdownInterval);
+                    nextQuestion();
+                }
+            }, 1000);
+        }
+
+        function nextQuestion() {
+            selectingAnswer = false;
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion(questions[currentQuestionIndex]);
+                document.getElementById("next-btn").disabled = true;
+                document.getElementById("countdown").textContent = "";
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById("question-container").style.display = "none";
+            document.getElementById("next-btn").style.display = "none";
+            document.getElementById("countdown").style.display = "none";
+            document.getElementById("result").style.display = "block";
+            document.getElementById("result").textContent = `You answered ${correctAnswersCount} out of ${questions.length} questions correctly!`;
+            document.getElementById("restart-btn").style.display = "block";
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            correctAnswersCount = 0;
+            selectingAnswer = false;
+            document.getElementById("question-container").style.display = "block";
+            document.getElementById("next-btn").style.display = "block";
+            document.getElementById("countdown").style.display = "block";
+            document.getElementById("result").style.display = "none";
+            document.getElementById("restart-btn").style.display = "none";
+            showQuestion(questions[currentQuestionIndex]);
+        }
+    </script>
+</body>
+</html>
