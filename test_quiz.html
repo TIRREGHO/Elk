@@ -32,7 +32,7 @@
         <p id="countdown"></p>
         <!--<button id="next-btn" onclick="nextQuestion()" disabled>Next Question</button>-->
         <p id="result"></p>
-        <button id="restart-btn" onclick="restartQuiz()">Restart</button>
+        <button id="restart-btn" onclick="restartQuiz()">Back  to the Map</button>
     </div>
     <script>
         const questions = [
@@ -147,7 +147,8 @@
         }
 
         function restartQuiz() {
-            currentQuestionIndex = 0;
+            window.location.href = "map.html";
+           /* currentQuestionIndex = 0;
             correctAnswersCount = 0;
             selectingAnswer = false;
             document.getElementById("question-container").style.display = "block";
@@ -155,7 +156,7 @@
             document.getElementById("countdown").style.display = "block";
             document.getElementById("result").style.display = "none";
             document.getElementById("restart-btn").style.display = "none";
-            showQuestion(questions[currentQuestionIndex]);
+            showQuestion(questions[currentQuestionIndex]);*/
         }
     </script>
 </body>
