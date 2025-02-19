@@ -1,3 +1,8 @@
+:root {
+  --backgroundorange: #fff;     /*TODO: change to the actual color*/
+  --buttonorange:#fff;    /*TODO: change to the actual color*/
+}
+
 
 .quiz-container {
   background-color: #fff;
@@ -83,17 +88,17 @@ h1 {
     color: white;
     padding: 10px 0;
     text-align: center;
-    z-index: 1000; /* Stellt sicher, dass die Menüleiste immer im Vordergrund bleibt */
-    border-bottom: 3px solid black; /* Schwarze Border unten */
+    z-index: 1000; /* forground setting*/
+    border-bottom: 3px solid black; 
 }
 #container {
     position: relative;
-    overflow: scroll; /* Ermöglicht Scrollen innerhalb des Containers */
-    margin-top: 60px; /* Platz für die Menüleiste */
+    overflow: scroll; 
+    margin-top: 60px; 
 }
 #map {
-    width: 1000px; /* Feste Breite der Karte */
-    height: 2000px; /* Feste Höhe der Karte */
+    width: 1000px; 
+    height: 2000px; 
     background: url('./assets/map.png') no-repeat top left;
     background-size: cover;
     margin-top: 200px;
@@ -121,7 +126,7 @@ h1 {
     transform: scale(0.95);
 }
 #text-container {
-  white-space: pre-wrap; /* Ändert das Verhalten, um Zeilenumbrüche zu ermöglichen */
+  white-space: pre-wrap; 
 }
 .textbox {
   padding: 15px;
@@ -137,8 +142,8 @@ h1 {
 }
 #name_input {
   display: none;
-  flex-direction: column; /* Hinzugefügt, um das Layout in einer Spalte anzuordnen */
-  align-items: center; /* Zentriert den Inhalt horizontal */
+  flex-direction: column; 
+  align-items: center; 
   margin-top: 50px;
 }
 #name_input input {
@@ -146,7 +151,7 @@ h1 {
   text-align: center;
 }
 .btn-custom {
-  background-color: #FFB800; /* Dunklere Farbe als der Hintergrund des Bodys */
+  background-color: #FFB800; 
   color: #FFFFFF;
   margin-top: 20px;
   font-size: 2.5rem;
@@ -154,14 +159,14 @@ h1 {
   transition: background-color 0.3s, transform 0.3s;
 }
 .btn-custom:hover {
-  background-color: #FFCB44; /* Hellere Farbe beim Hover */
+  background-color: #FFCB44;
 }
 .btn-custom:active {
-  transform: scale(0.95); /* Klick-Animation (Button wird gedrückt) */
+  transform: scale(0.95); 
 }
 #next_button {
   display: none;
-  flex-direction: column; /* Hinzugefügt, um das Layout in einer Spalte anzuordnen */
-  align-items: center; /* Zentriert den Inhalt horizontal */
+  flex-direction: column; 
+  align-items: center; 
   margin-top: 50px;
 }

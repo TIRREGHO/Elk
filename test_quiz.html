@@ -109,7 +109,7 @@
             buttons.forEach(button => {
                 button.disabled = true;
             });
-            document.getElementById("next-btn").disabled = false;
+            //document.getElementById("next-btn").disabled = false;
         }
 
         function startCountdown(seconds) {
@@ -130,7 +130,7 @@
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.length) {
                 showQuestion(questions[currentQuestionIndex]);
-                document.getElementById("next-btn").disabled = true;
+                //document.getElementById("next-btn").disabled = true;
                 document.getElementById("countdown").textContent = "";
             } else {
                 showResult();
@@ -139,7 +139,7 @@
 
         function showResult() {
             document.getElementById("question-container").style.display = "none";
-            document.getElementById("next-btn").style.display = "none";
+            //document.getElementById("next-btn").style.display = "none";
             document.getElementById("countdown").style.display = "none";
             document.getElementById("result").style.display = "block";
             document.getElementById("result").textContent = `You answered ${correctAnswersCount} out of ${questions.length} questions correctly!`;
@@ -151,7 +151,7 @@
             correctAnswersCount = 0;
             selectingAnswer = false;
             document.getElementById("question-container").style.display = "block";
-            document.getElementById("next-btn").style.display = "block";
+            //document.getElementById("next-btn").style.display = "block";
             document.getElementById("countdown").style.display = "block";
             document.getElementById("result").style.display = "none";
             document.getElementById("restart-btn").style.display = "none";
