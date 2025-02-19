@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Animation</title>
+    <!-- bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: block;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFC90E;
+            font-family: Arial, sans-serif;
+            font-size: 2.2rem;
+        }
+
+        #text-container {
+            white-space: pre-wrap; /* Ändert das Verhalten, um Zeilenumbrüche zu ermöglichen */
+        }
+        .textbox {
+            padding: 15px;
+            padding-top: 30px;
+            border-width: 1px;
+            border: black;
+            border-radius: 15px;
+            background-color: #FFF;
+            margin-left: 120px;
+            margin-right: 170px;
+            height: auto;
+            margin-top: 0px;
+        }
+        #name_input {
+            display: none;
+            flex-direction: column; /* Hinzugefügt, um das Layout in einer Spalte anzuordnen */
+            align-items: center; /* Zentriert den Inhalt horizontal */
+            margin-top: 50px;
+        }
+        #name_input input {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        .btn-custom {
+            background-color: #FFB800; /* Dunklere Farbe als der Hintergrund des Bodys */
+            color: #FFFFFF;
+            margin-top: 20px;
+            font-size: 2.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: #FFCB44; /* Hellere Farbe beim Hover */
+        }
+        .btn-custom:active {
+            transform: scale(0.95); /* Klick-Animation (Button wird gedrückt) */
+        }
+        #next_button {
+            display: none;
+            flex-direction: column; /* Hinzugefügt, um das Layout in einer Spalte anzuordnen */
+            align-items: center; /* Zentriert den Inhalt horizontal */
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body style="background-color: #FFC90E; font-size: 2.2rem;">
+    <video id="myVideo" style="margin-top: 20%; margin-bottom: -68px;" width="1000" autoplay muted>
+        <source id="video" src="elk_shows_up.mp4" type="video/mp4">
+        Format not supported
+    </video>
+    
+    <br>
+    
+    <br>
+    
+    <div class="textbox">
+        <div id="text-container"></div>
+    </div>
+    
+    <div id="name_input">
+        <input type="text" id="name" placeholder="Your Name"/>
+        <button class="btn btn-custom" onclick="next_video()">Submit</button>
+    </div>
+  
+    <div id="next_button">
+        <button id="button2" class="btn btn-custom" onclick="">Help him</button>
+    </div>
+    
+  
+
+    <script>
+        const text = "Hello there. I'm Elio. Whats your name? ";
+        let text2 = "Hello ...! At the moment I have some problems. Could you help me?";
+        const container = document.getElementById("text-container");
+        let index = 0;
+        let index2 = 0;
+
+        function type() {
+            if (index < text.length) {
+                container.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(type, 50);
+            }
+            setTimeout(type, 1000);
+        }
+
+        function enable_name_input() {
+            document.getElementById("name_input").style.display = "flex";
+        }
+        setTimeout(function() {
+            togglePlayPause();
+        }, 2300);
+        setTimeout(function() {
+            type();
+        }, 1500);
+
+        setTimeout(function() {
+            enable_name_input();
+        }, 4000);
+
+        function next_video() {
+           
+            togglePlayPause();
+            
+            container.innerHTML = "";
+
+            // Namen des Benutzers abrufen und in text2 einfügen
+            var name = document.getElementById("name").value;
+            text2 = `Hello ${name}! At the moment I have some problems. Could you help me?`;
+            document.getElementById("name_input").style.display = "none";
+            second_text();
+        }
+
+        function second_text() {
+            if (index2 < text2.length) {
+                container.innerHTML += text2.charAt(index2);
+                index2++;
+                setTimeout(second_text, 50);
+            }
+            
+            setTimeout(function() {
+                enable_next_button();
+            }, 5000);
+        }
+
+        function enable_next_button() {
+            document.getElementById("next_button").style.display = "flex";
+        }
+
+        function togglePlayPause() {
+            var video = document.getElementById("myVideo");
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+    </script>
+</body>
+</html>
