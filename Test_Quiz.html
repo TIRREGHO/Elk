@@ -3,90 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- bootstrap CSS -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Font Awesome CSS -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+      <!-- Stylesheet-->
+      <link rel="stylesheet" href="styles.css">
     <title>Quiz: Who Wants to Be a Millionaire?</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .quiz-container {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-            width: 80%;
-            max-width: 600px;
-        }
-        h1 {
-            color: #ffcc00; /* Yellow */
-        }
-        #question {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-        #answers button {
-            background-color: #ff9933; /* Orange */
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            width: 100%;
-            font-size: 18px;
-        }
-        #answers button:hover {
-            background-color: #ffcc00; /* Yellow */
-        }
-        #answers button.correct {
-            background-color: #4CAF50; /* Green */
-        }
-        #answers button.wrong {
-            background-color: #f44336; /* Red */
-        }
-        #next-btn {
-            background-color: #ffcc00; /* Yellow */
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            font-size: 18px;
-            padding: 10px 20px;
-            margin-top: 20px;
-        }
-        #next-btn:hover {
-            background-color: #ff9933; /* Orange */
-        }
-        #countdown {
-            font-size: 18px;
-            margin-top: 20px;
-        }
-        #result {
-            display: none;
-            font-size: 20px;
-            margin-top: 20px;
-        }
-        #restart-btn {
-            background-color: #ffcc00; /* Yellow */
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            font-size: 18px;
-            padding: 10px 20px;
-            margin-top: 20px;
-            display: none;
-        }
-        #restart-btn:hover {
-            background-color: #ff9933; /* Orange */
-        }
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
     </style>
 </head>
 <body>
