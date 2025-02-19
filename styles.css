@@ -1,5 +1,5 @@
 :root {
-  --backgroundorange: #fff;     /*TODO: change to the actual color*/
+  --backgroundorange: #FFC90E;     /*TODO: change to the actual color*/
   --buttonorange:#fff;    /*TODO: change to the actual color*/
 }
 
@@ -90,6 +90,19 @@ h1 {
     text-align: center;
     z-index: 1000; /* forground setting*/
     border-bottom: 3px solid black; 
+}
+#menu2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color:#FFC90E;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  z-index: 1000; /* forground setting*/
+  border-bottom: 3px solid black; 
 }
 #container {
     position: relative;
