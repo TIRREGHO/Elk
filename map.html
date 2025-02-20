@@ -45,14 +45,14 @@
                 <a href="www.google.com" style="height: 103%;font-size:40px;margin-left:-1px;margin-top:-14px;background-color: orange;border-color: black;" class="btn btn-primary"><p style="margin-top: 50px;">go back to the AppCenter</p></a>
             </div>
             <div class="col-6">
-                <video style="margin-top: 0; height: 288px; " autoplay muted>
+                <video style="margin-top: 0; height: 288px; " autoplay muted loop>
                     <source id="video" src="assets/Elk_shows_up_higher.mp4" type="video/mp4">
                     Format not supported
                 </video>
             </div>
             <div class="col-3">
                 <div class="scoreboard">
-                    <p >Score <br> <span id="score">0</span></p>
+                    <p>Score <br> <span id="score">0</span></p>
                 </div>
             </div>
         </div>
@@ -94,7 +94,7 @@
             }
         }
 
-        // Gesamtpunktestand berechnen
+        // Gesamtpunktestand berechnen und runden
         function calculateTotalScore() {
             let totalScore = 0;
             for (let i = 1; i <= 5; i++) {
@@ -103,7 +103,7 @@
                     totalScore += score.score;
                 }
             }
-            return totalScore;
+            return Math.round(totalScore); // Runden auf ganze Zahl
         }
 
         function updateButtons() {
