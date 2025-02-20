@@ -41,9 +41,11 @@
 <body>
     <div id="menu">
         <div class="row">
-            <div class="col-3"></div>
+            <div class="col-3">
+                <a href="www.google.com" style="height: 103%;font-size:40px;margin-left:-1px;margin-top:-14px;background-color: orange;border-color: black;" class="btn btn-primary"><p style="margin-top: 50px;">go back to the AppCenter</p></a>
+            </div>
             <div class="col-6">
-                <video style="margin-top: 0; height: 288px;" autoplay muted>
+                <video style="margin-top: 0; height: 288px; " autoplay muted>
                     <source id="video" src="assets/Elk_shows_up_higher.mp4" type="video/mp4">
                     Format not supported
                 </video>
@@ -57,14 +59,31 @@
     </div>
     <div id="container">
         <div id="map">
-            <div class="button" style="top: 350px; left: 510px;" onclick="showAlert(1)">1</div>
-            <div class="button" style="top: 580px; left: 600px;" onclick="showAlert(2)">2</div>
-            <div class="button" style="top: 490px; left: 300px;" onclick="showAlert(3)">3</div>
-            <div class="button" style="top: 1180px; left: 545px;" onclick="showAlert(4)">4</div>
-            <div class="button" style="top: 1540px; left: 300px;" onclick="showAlert(5)">5</div>
+            <div id="button1" class="button" style="top: 350px; left: 510px;" onclick="showAlert(1)">1</div>
+            <div id="button2" class="button" style="top: 580px; left: 600px;" onclick="showAlert(2)">2</div>
+            <div id="button3" class="button" style="top: 490px; left: 300px;" onclick="showAlert(3)">3</div>
+            <div id="button4" class="button" style="top: 1180px; left: 545px;" onclick="showAlert(4)">4</div>
+            <div id="button5" class="button" style="top: 1540px; left: 300px;" onclick="showAlert(5)">5</div>
         </div>
     </div>
     <script>
+        function saveScore(finalScore) {
+            const level = "lvl1";
+            const scoreData = { score: finalScore };
+            document.cookie = `${level}=${JSON.stringify(scoreData)}; path=/;`;
+        }
+
+        function getScore(level) {
+            const cookies = document.cookie.split('; ');
+            for (let cookie of cookies) {
+                const [key, value] = cookie.split('=');
+                if (key === level) {
+                    return JSON.parse(value);
+                }
+            }
+            return null;
+        }
+
         // Funktion zum Holen von Cookies
         function getCookie(name) {
             let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -79,14 +98,37 @@
         function calculateTotalScore() {
             let totalScore = 0;
             for (let i = 1; i <= 5; i++) {
-                totalScore += getCookie('lvl' + i);
+                const score = getScore('lvl' + i);
+                if (score) {
+                    totalScore += score.score;
+                }
             }
             return totalScore;
+        }
+
+        function updateButtons() {
+            let highestLevel = 1;
+            for (let i = 1; i <= 5; i++) {
+                const button = document.getElementById(`button${i}`);
+                const score = getScore('lvl' + i);
+                if (!score) {
+                    if (i > highestLevel) {
+                        button.style.display = 'none';
+                    } else {
+                        highestLevel = i;
+                        button.style.display = 'block';
+                    }
+                } else {
+                    highestLevel = i + 1;
+                    button.style.display = 'block';
+                }
+            }
         }
 
         // Score anzeigen
         document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('score').textContent = calculateTotalScore();
+            updateButtons();
         });
 
         function showAlert(buttonNumber) {
