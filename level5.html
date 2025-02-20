@@ -130,52 +130,34 @@
 <script>
     const questions = [
         {
-            question: "What is the capital of Finland?",
+            question: "What is the general emergency number in Finland that you can call in case of an emergency?",
             answers: [
-                { text: "Helsinki", correct: true },
-                { text: "Espoo", correct: false },
-                { text: "Tampere", correct: false },
-                { text: "Turku", correct: false }
+                { text: "911", correct: false },
+                { text: "999", correct: false },
+                { text: "112", correct: true },
+                { text: "110", correct: false }
             ]
         },
         {
-            question: "Which of these is a popular Finnish sauna tradition?",
+            question: "What is the Finnish public healthcare system called?",
             answers: [
-                { text: "Pouring water on hot stones", correct: true },
-                { text: "Using ice cubes in the sauna", correct: false },
-                { text: "Wearing thick bathrobes", correct: false },
-                { text: "Cooking food in the sauna", correct: false }
+                { text: "SOTE", correct: true },
+                { text: "KELA", correct: false },
+                { text: "Terveyspalvelu", correct: false },
+                { text: "Hoitokeskus", correct: false }
             ]
         },
         {
-            question: "What is the official language of Finland?",
+            question: "Which Finnish hospital is best known for treating severe burns and rare diseases?",
             answers: [
-                { text: "Finnish", correct: true },
-                { text: "Swedish", correct: false },
-                { text: "Norwegian", correct: false },
-                { text: "Danish", correct: false }
+                { text: "Kuopio University Hospital", correct: false },
+                { text: "Helsinki University Hospital", correct: true },
+                { text: "Lapland Central Hospital", correct: false },
+                { text: "Vaasa Central Hospital", correct: false }
             ]
         },
-        {
-            question: "What is the official language of Finland?",
-            answers: [
-                { text: "Finnish", correct: true },
-                { text: "Swedish", correct: false },
-                { text: "Norwegian", correct: false },
-                { text: "Danish", correct: false }
-            ]
-        },
-        {
-            question: "What is the official language of Finland?",
-            answers: [
-                { text: "Finnish", correct: true },
-                { text: "Swedish", correct: false },
-                { text: "Norwegian", correct: false },
-                { text: "Danish", correct: false }
-            ]
-        },
-        // Add more questions here...
-    ];
+        // Add more questions here...
+    ];
 
     let currentQuestionIndex = 0;
     let correctAnswersCount = 0;

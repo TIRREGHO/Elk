@@ -128,54 +128,36 @@
 </body>
 </html>
 <script>
-    const questions = [
+   const questions = [
         {
-            question: "What is the capital of Finland?",
+            question: "What is the first step you should take if you notice a fire on campus?",
             answers: [
-                { text: "Helsinki", correct: true },
-                { text: "Espoo", correct: false },
-                { text: "Tampere", correct: false },
-                { text: "Turku", correct: false }
+                { text: "Try to put out the fire yourself ", correct: false },
+                { text: "Leave the building without warning others", correct: false },
+                { text: "Press the fire alarm button and call 112", correct: true },
+                { text: "Wait for instructions", correct: false }
             ]
         },
         {
-            question: "Which of these is a popular Finnish sauna tradition?",
+            question: "Where can you find Automated External Defibrillators (AEDs) on Karelia UAS campuses?",
             answers: [
-                { text: "Pouring water on hot stones", correct: true },
-                { text: "Using ice cubes in the sauna", correct: false },
-                { text: "Wearing thick bathrobes", correct: false },
-                { text: "Cooking food in the sauna", correct: false }
+                { text: "In the library", correct: false },
+                { text: "At the information desks ", correct: true },
+                { text: "In the cafeteria", correct: false },
+                { text: "In every classroom", correct: false }
             ]
         },
         {
-            question: "What is the official language of Finland?",
+            question: "Where can you find a first aid kit on campus?",
             answers: [
-                { text: "Finnish", correct: true },
-                { text: "Swedish", correct: false },
-                { text: "Norwegian", correct: false },
-                { text: "Danish", correct: false }
+                { text: "In every classroom", correct: false },
+                { text: "At the information desk", correct: false },
+                { text: "Only in the cafeteria", correct: true },
+                { text: "Nowhere, you must bring your own", correct: false }
             ]
         },
-        {
-            question: "What is the official language of Finland?",
-            answers: [
-                { text: "Finnish", correct: true },
-                { text: "Swedish", correct: false },
-                { text: "Norwegian", correct: false },
-                { text: "Danish", correct: false }
-            ]
-        },
-        {
-            question: "What is the official language of Finland?",
-            answers: [
-                { text: "Finnish", correct: true },
-                { text: "Swedish", correct: false },
-                { text: "Norwegian", correct: false },
-                { text: "Danish", correct: false }
-            ]
-        },
-        // Add more questions here...
-    ];
+        // Add more questions here...
+    ];
 
     let currentQuestionIndex = 0;
     let correctAnswersCount = 0;

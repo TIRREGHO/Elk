@@ -130,52 +130,35 @@
 <script>
     const questions = [
         {
-            question: "What is the capital of Finland?",
+            question: "Which Finnish city has the northernmost cinema in the European Union?",
             answers: [
-                { text: "Helsinki", correct: true },
-                { text: "Espoo", correct: false },
-                { text: "Tampere", correct: false },
-                { text: "Turku", correct: false }
+                { text: "Oulu", correct: false },
+                { text: "Rovaniemi", correct: false },
+                { text: "Sodankylä", correct: false },
+                { text: "Ivalo", correct: true }
             ]
         },
         {
-            question: "Which of these is a popular Finnish sauna tradition?",
+            question: "What should you do with your phone during a movie?",
             answers: [
-                { text: "Pouring water on hot stones", correct: true },
-                { text: "Using ice cubes in the sauna", correct: false },
-                { text: "Wearing thick bathrobes", correct: false },
-                { text: "Cooking food in the sauna", correct: false }
+                { text: "Keep it on silent but check it occasionally", correct: false },
+                { text: "Turn off the sound and brightness or put it away", correct: true },
+                { text: "Take pictures of the screen for social media", correct: false },
+                { text: "Answer calls quietly", correct: false }
             ]
         },
         {
-            question: "What is the official language of Finland?",
+            question: "If someone is talking loudly during the movie, what should you do?",
             answers: [
-                { text: "Finnish", correct: true },
-                { text: "Swedish", correct: false },
-                { text: "Norwegian", correct: false },
-                { text: "Danish", correct: false }
-            ]
-        },
-        {
-            question: "What is the official language of Finland?",
-            answers: [
-                { text: "Finnish", correct: true },
-                { text: "Swedish", correct: false },
-                { text: "Norwegian", correct: false },
-                { text: "Danish", correct: false }
-            ]
-        },
-        {
-            question: "What is the official language of Finland?",
-            answers: [
-                { text: "Finnish", correct: true },
-                { text: "Swedish", correct: false },
-                { text: "Norwegian", correct: false },
-                { text: "Danish", correct: false }
+                { text: "Shush them aggressively", correct: false },
+                { text: "Throw popcorn at them", correct: false },
+                { text: "Politely ask them to lower their voice", correct: true },
+                { text: "Complain loudly so others join in", correct: false }
             ]
         },
         // Add more questions here...
     ];
+
 
     let currentQuestionIndex = 0;
     let correctAnswersCount = 0;
