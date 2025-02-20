@@ -4,18 +4,38 @@
     <meta charset="UTF-8">
     <title>Karte von Joensuu</title>
     
-      <!-- bootstrap CSS -->
-      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-      <!-- Font Awesome CSS -->
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-      <!-- Stylesheet-->
-      <link rel="stylesheet" href="styles.css">
+    <!-- bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Stylesheet-->
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             margin: 0;
             padding: 0;
             overflow: scroll; /* Verhindert das Scrollen des Body */
         }
+
+       
+        .scoreboard {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background-color: transparent;
+            padding: 10px;
+            color: black;
+            border-radius: 5px;
+            font-size: 50px;
+            z-index: 1000; /* Ensures it stays on top */
+        }
+
+        #score {
+            font-size: 100px;
+            font-weight: 700;
+           
+        }
+
     </style>
 </head>
 <body>
@@ -23,9 +43,16 @@
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
-                <img style="height: 288px;" src="assets/Elk_for_menu.png" alt="Elk"/>
+                <video style="margin-top: 0; height: 288px;" autoplay muted>
+                    <source id="video" src="assets/Elk_shows_up_higher.mp4" type="video/mp4">
+                    Format not supported
+                </video>
             </div>
-            <div class="col-3"></div>
+            <div class="col-3">
+                <div class="scoreboard">
+                    <p >Score <br> <span id="score">0</span></p>
+                </div>
+            </div>
         </div>
     </div>
     <div id="container">
@@ -38,8 +65,32 @@
         </div>
     </div>
     <script>
+        // Funktion zum Holen von Cookies
+        function getCookie(name) {
+            let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            if (match) {
+                return parseInt(match[2]);
+            } else {
+                return 0;
+            }
+        }
+
+        // Gesamtpunktestand berechnen
+        function calculateTotalScore() {
+            let totalScore = 0;
+            for (let i = 1; i <= 5; i++) {
+                totalScore += getCookie('lvl' + i);
+            }
+            return totalScore;
+        }
+
+        // Score anzeigen
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById('score').textContent = calculateTotalScore();
+        });
+
         function showAlert(buttonNumber) {
-            window.location.href = "test_quiz.html"; 
+            window.location.href = "test_quiz.html";
         }
     </script>
 </body>
