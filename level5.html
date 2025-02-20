@@ -116,8 +116,7 @@
         </div>
         
     </div>
-    <div class="quiz-container">
-     
+    <div class="quiz-container"> 
         <div id="question-container">
             <p id="question"></p>
             <div id="answers"></div>
@@ -258,8 +257,8 @@
         moodBar.style.width = moodPercentage + "%";
         moodBar.style.backgroundColor = moodLevels[Math.max(0, 3 - wrongAnswersCount)];
         if (wrongAnswersCount >= 4) {
-            alert("Try Again");
-            restartQuiz();
+            window.location.href = "failed.html";
+            //restartQuiz();
         }
     }
 
@@ -281,7 +280,7 @@
     }
 
     function restartQuiz() {
-        window.location.href = "map.html";
+        window.location.href = "end.html";
     }
 
     function saveScore(finalScore) {

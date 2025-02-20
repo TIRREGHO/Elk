@@ -261,8 +261,8 @@
         moodBar.style.width = moodPercentage + "%";
         moodBar.style.backgroundColor = moodLevels[Math.max(0, 3 - wrongAnswersCount)];
         if (wrongAnswersCount >= 4) {
-            alert("Try Again");
-            restartQuiz();
+            window.location.href = "failed.html";
+            //restartQuiz();
         }
     }
 

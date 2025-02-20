@@ -50,10 +50,12 @@
 
     <script>
         const text = "Hello there. I'm Mikko. Whats your name? ";
-        let text2 = "Hello ...! At the moment I have some problems. Could you help me?";
+        let text2 = "Hello ...! I'm new in Joensuu. Could you help me find my way around the city?";
         const container = document.getElementById("text-container");
         let index = 0;
         let index2 = 0;
+        var video = document.getElementById("myVideo");
+        video.play();
         function goto_map(){
             window.location.href = "instructions.html";
         }
@@ -89,7 +91,7 @@
 
             // Namen des Benutzers abrufen und in text2 einfügen
             var name = document.getElementById("name").value;
-            text2 = `Hello ${name}! At the moment I have some problems. Could you help me?`;
+            text2 = `Hello ${name}! I'm new in Joensuu. Could you help me find my way around the city?`;
             document.getElementById("name_input").style.display = "none";
             second_text();
         }
