@@ -211,3 +211,21 @@ h1 {
   align-items: center; 
   margin-top: 50px;
 }
+
+.scoreboard {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  background-color: transparent;
+  padding: 10px;
+  color: black;
+  border-radius: 5px;
+  font-size: 50px;
+  z-index: 1000; /* Ensures it stays on top */
+}
+
+#score {
+  font-size: 100px;
+  font-weight: 700;
+ 
+}
