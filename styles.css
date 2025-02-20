@@ -85,6 +85,7 @@ h1 {
     width: 100%;
     height: 300px;
     background-color: #FFC90E;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
     color: white;
     padding: 10px 0;
     text-align: center;
@@ -92,6 +93,7 @@ h1 {
     border-bottom: 3px solid black; 
 }
 #menu2 {
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
   position: fixed;
   top: 0;
   left: 0;
