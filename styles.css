@@ -77,6 +77,25 @@ h1 {
 #restart-btn:hover {
   background-color: #ff9933; /* Orange */
 }
+.btn2{
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  background-color:#ff9933 ;
+  border-color:#ff9933  ;
+}
+.btn2:hover{
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  background-color:#ff9933 ;
+  border-color: #a74c01;
+}
+.btn2:active{
+  border-color: #a74c01;
+  background-color:#a74c01 ;
+}
+.btn2:focus{
+  border-color: #a74c01;
+  background-color:#a74c01 ;
+  box-shadow: none;
+}
 
 #menu {
     position: fixed;
