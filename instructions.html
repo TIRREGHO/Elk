@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Instructions</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: scroll;
+            background: url('./assets/map.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .instructions-box {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 500px auto;
+            max-width: 900px;
+        }
+
+        .skip-button {
+            margin-top: 20px;
+            background: #ffcc00;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Load the header dynamically -->
+    <div id="header-container"></div>
+
+    <div class="instructions-box">
+        <strong>Instructions</strong><br>
+        <p>1. Find locations on the map.</p>
+        <p>2. Click on the numbers to explore.</p>
+        <p>3. Answer questions to earn points.</p>
+        <p>4. Use the map wisely.</p>
+        <p>5. Click below to start.</p>
+        <div class="skip-button" onclick="skipInstructions()">Skip</div>
+    </div>
+
+    <script>
+        // Load the header dynamically
+        fetch("header.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("header-container").innerHTML = data;
+            });
+
+        function skipInstructions() {
+            window.location.href = "map.html"; // Redirects to the map page
+        }
+    </script>
+
+</body>
+</html>
