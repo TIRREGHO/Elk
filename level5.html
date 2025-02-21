@@ -253,10 +253,10 @@
     function updateMoodBar() {
         const moodBar = document.getElementById("mood-bar");
         const moodLevels = ["#ff0000", "#ff8000", "#ffff00", "#00ff00"];
-        let moodPercentage = 100 - (wrongAnswersCount / 4 * 100);
+        let moodPercentage = 100 - (wrongAnswersCount / 3 * 100);
         moodBar.style.width = moodPercentage + "%";
         moodBar.style.backgroundColor = moodLevels[Math.max(0, 3 - wrongAnswersCount)];
-        if (wrongAnswersCount >= 4) {
+        if (wrongAnswersCount >= 3) {
             window.location.href = "failed.html";
             //restartQuiz();
         }
