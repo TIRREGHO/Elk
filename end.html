@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Scorebar mit Status</title>
+    <title>End of the game</title>
     <!-- bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -13,7 +13,8 @@
             height: 100vh;
             margin: 0;
             font-size: 30px;
-            background-color: #fcac0038;
+            background-color: #FFC90E;
+            position: relative;
         }
 
         .scorebar-container {
@@ -22,8 +23,10 @@
         }
 
         .scorebar {
+            margin:15px;
+            margin-top:50px;
             width: 50px;
-            height: 1600px;
+            height: 800px;
             background-color: #ddd;
             position: relative;
         }
@@ -50,6 +53,7 @@
             font-size: 20px;
             margin-left: 20px;
         }
+
         .quiz-container {
             background-color: #fff;
             border-radius: 10px;
@@ -58,7 +62,7 @@
             text-align: center; /* Ensures all child elements are centered */
             width: 80%;
             /*max-width: 00px;*/
-            margin: 0 auto; /* Centers the container itself */
+            margin: 0 auto; /* Centers the container itself */
         }
 
         .scoreboard {
@@ -75,7 +79,6 @@
         #question-number {
             font-size: 20px;
         }
-      
 
         .intro-container, .quiz-container {
             display: none;
@@ -102,73 +105,102 @@
             height: 5px;
             background-color: darkred;
         }
-        .fail-container{
+
+        .fail-container {
             border-radius: 15px;
-           
+        }
+
+        .intro-container img {
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .intro-container {
+            margin-top: 100px; /* Moves the container down */
+        }
+
+        .level-title {
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-  <div class="intro-container fail-container visible" style="background-color: white;
-  margin: 20px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
-    
-      
-    <div class="scorebar-container">
+
+  <div class="intro-container fail-container visible" style="background-color: white; margin: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); position: relative;">
+    <div class="scorebar-container" style="width: 700px;">
+      <img style="bottom: 200px;margin-top:-300px" width="450" src="assets/happy_elk.png"/>
       <div class="scorebar">
           <div class="score-level" style="top: 0;">Expert</div>
           <div class="score-level" style="top: 50%;">Intermediate</div>
           <div class="score-level" style="top: 100%;">Newbie</div>
           <div class="score" id="score"></div>
       </div>
-      <div class="score-message">
-          Gesamtpunktzahl <br> <span style="
-            font-size:80px" id="totalScore">0</span>
+      <div class="score-message" style="margin-left: 190px;
+    scale: 2.0;">
+          <div id="levelTitle" class="level-title"></div>
+          Gesamtpunktzahl <br> <span style="font-size: 80px;" id="totalScore">0</span>
       </div>
+    </div>
+    <button id="restart-btn" style="margin: 5px; font-size: 50px;border-color:black;background-color: #fda800;" class="btn btn-primary btn2" onclick="restartQuiz()">Back to the Map</button>
   </div>
-      <button id="restart-btn btn btn-primary btn2" onclick="restartQuiz()">Back to the Map</button>
-  </div>
-   
 
-    <script>
-        // Funktion zum Holen von Cookies
-        function getCookie(name) {
-            let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-            if (match) {
-                return parseInt(match[2]);
-            } else {
-                return 0;
-            }
-        }
+  <script>
+      // Funktion zum Holen von Cookies
+      function getCookie(name) {
+          let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+          if (match) {
+              return parseInt(match[2]);
+          } else {
+              return 0;
+          }
+      }
 
-        // Gesamtpunktestand berechnen und runden
-        function calculateTotalScore() {
-            let totalScore = 0;
-            for (let i = 1; i <= 5; i++) {
-                const score = getCookie('lvl' + i);
-                if (score) {
-                    totalScore += score;
-                }
-            }
-            return Math.round(totalScore); // Runden auf ganze Zahl
-        }
+      // Gesamtpunktestand berechnen und runden
+      function calculateTotalScore() {
+          let totalScore = 0;
+          for (let i = 1; i <= 5; i++) {
+              const score = getCookie('lvl' + i);
+              if (score) {
+                  totalScore += score;
+              }
+          }
+          return Math.round(totalScore); // Runden auf ganze Zahl
+      }
 
-        // Aktualisiere die Scorebar und die Punktzahl
-        function updateScoreBar(score) {
-            const scoreBar = document.getElementById('score');
-            const totalScoreElement = document.getElementById('totalScore');
+      // Aktualisiere die Scorebar, die Punktzahl und den Level-Titel
+      function updateScoreBar(score) {
+          const scoreBar = document.getElementById('score');
+          const totalScoreElement = document.getElementById('totalScore');
+          const levelTitle = document.getElementById('levelTitle');
 
-            let heightPercent = (score - 500) / 1000 * 100;
-            heightPercent = Math.max(0, Math.min(100, heightPercent)); // Begrenze den Wert zwischen 0 und 100
-            scoreBar.style.height = heightPercent + '%';
+          let heightPercent = (score - 500) / 1000 * 100;
+          heightPercent = Math.max(0, Math.min(100, heightPercent)); // Begrenze den Wert zwischen 0 und 100
+          scoreBar.style.height = heightPercent + '%';
 
-            totalScoreElement.textContent = score;
-        }
+          totalScoreElement.textContent = score;
 
-        // Wenn das Dokument geladen ist, zeige die Scorebar an
-        document.addEventListener("DOMContentLoaded", () => {
-            const totalScore = calculateTotalScore();
-            updateScoreBar(totalScore);
-        });
-    </script>
+          // Bestimme den Level-Titel basierend auf dem Score
+          if (score >= 1500) {
+              levelTitle.textContent = 'Expert';
+          } else if (score >= 1000) {
+              levelTitle.textContent = 'Intermediate';
+          } else {
+              levelTitle.textContent = 'Newbie';
+          }
+      }
+
+      // Wenn das Dokument geladen ist, zeige die Scorebar an
+      document.addEventListener("DOMContentLoaded", () => {
+          const totalScore = calculateTotalScore();
+          updateScoreBar(totalScore);
+      });
+      function restartQuiz(){
+        window.location.href = "map.html";
+      }
+  </script>
 </body>
 </html>
