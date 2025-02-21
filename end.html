@@ -23,8 +23,8 @@
         }
 
         .scorebar {
-            margin:15px;
-            margin-top:50px;
+            margin: 15px;
+            margin-top: 50px;
             width: 50px;
             height: 800px;
             background-color: #ddd;
@@ -139,8 +139,7 @@
           <div class="score-level" style="top: 100%;">Newbie</div>
           <div class="score" id="score"></div>
       </div>
-      <div class="score-message" style="margin-left: 190px;
-    scale: 2.0;">
+      <div class="score-message" style="margin-left: 190px; scale: 2.0;">
           <div id="levelTitle" class="level-title"></div>
           Gesamtpunktzahl <br> <span style="font-size: 80px;" id="totalScore">0</span>
       </div>
@@ -149,23 +148,24 @@
   </div>
 
   <script>
-      // Funktion zum Holen von Cookies
-      function getCookie(name) {
-          let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-          if (match) {
-              return parseInt(match[2]);
-          } else {
-              return 0;
+      function getScore(level) {
+          const cookies = document.cookie.split('; ');
+          for (let cookie of cookies) {
+              const [key, value] = cookie.split('=');
+              if (key === level) {
+                  return JSON.parse(value);
+              }
           }
+          return null;
       }
 
       // Gesamtpunktestand berechnen und runden
       function calculateTotalScore() {
           let totalScore = 0;
           for (let i = 1; i <= 5; i++) {
-              const score = getCookie('lvl' + i);
+              const score = getScore('lvl' + i);
               if (score) {
-                  totalScore += score;
+                  totalScore += score.score;
               }
           }
           return Math.round(totalScore); // Runden auf ganze Zahl
@@ -198,6 +198,7 @@
           const totalScore = calculateTotalScore();
           updateScoreBar(totalScore);
       });
+
       function restartQuiz(){
         window.location.href = "map.html";
       }
